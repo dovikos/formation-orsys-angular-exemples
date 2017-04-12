@@ -1,10 +1,15 @@
 (function() {
 	'use strict';
+
 	var app = angular.module('myApp', []);
-	app.value('hash', {name: 'md5', compute: function(n) {
- return new Hashes.MD5().hex(n);
-}
+
+	app.value('hash', {
+		name: 'md5',
+		compute: function(n) {
+			return new Hashes.MD5().hex(n);
+		}
 	});
+
 	app.provider('passwordService', function() {
 		var salt = 'default';
 		this.salt = function(s) {
@@ -20,9 +25,11 @@
 			};
 		}];
 	});
+
 	app.config(['passwordServiceProvider', function(passwordServiceProvider) {
 		passwordServiceProvider.salt('hmmm..., it is salted...');
 	}]);
+	
 	app.controller('MyController', ['passwordService', 'hash', '$scope', function(passwordService, hash, $scope) {
 		$scope.hash = hash;
 		$scope.$watch('password + login', function() {

@@ -5,8 +5,8 @@
 	app.value('hash', {
 		name: 'md5',
 		compute: function(n) {
- return new Hashes.MD5().hex(n);
-}
+			return new Hashes.MD5().hex(n);
+		}
 	});
 
 	app.factory('passwordService', ['hash', '$log', function(hash, $log) {

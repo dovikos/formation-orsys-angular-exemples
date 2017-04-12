@@ -21,9 +21,23 @@
 	Cat.prototype = new Animal();
 
 	var garfield = new Cat();
+	console.log(garfield);
 	garfield.speak();
 	garfield.sleep();
 	garfield.eat();
+
+	// en ES6...
+	class Animal2 {
+		eat() {console.log('eat');}
+		sleep() {console.log('sleep');}
+	}
+
+	class Cat2 extends Animal2 {
+		speak() {console.log('speak');}
+	}
+
+	var garfield2 = new Cat2();
+	console.log('garfield2', garfield2);
 
 	function myTest() {
 		// eslint-disable-next-line no-use-before-define
